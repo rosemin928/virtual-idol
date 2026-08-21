@@ -16,9 +16,9 @@ app.post('/api/chat', async (req, res) => {
     return res.status(400).json({ error: 'messages must be a non-empty array' });
   }
 
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    return res.status(500).json({ error: 'OPENAI_API_KEY is not configured on the server (.env)' });
+    return res.status(500).json({ error: 'GEMINI_API_KEY is not configured on the server (.env)' });
   }
 
   try {

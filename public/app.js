@@ -90,7 +90,7 @@
   });
 
   // ---- 채팅 씬 ----
-  let chatHistory = []; // OpenAI Chat Completions 형식: [{role, content}]
+  let chatHistory = []; // {role: 'user' | 'assistant', content} — 서버에서 Gemini 형식으로 변환
 
   function startChat() {
     chatLog.innerHTML = '';

@@ -12,9 +12,9 @@ export default async function handler(req, res) {
     return;
   }
 
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    res.status(500).json({ error: 'OPENAI_API_KEY is not configured (Vercel Project Settings > Environment Variables)' });
+    res.status(500).json({ error: 'GEMINI_API_KEY is not configured (Vercel Project Settings > Environment Variables)' });
     return;
   }
 

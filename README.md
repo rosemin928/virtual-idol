@@ -6,7 +6,7 @@
 
 ```bash
 npm install
-cp .env.example .env   # OPENAI_API_KEY에 실제 키 입력 (console.anthropic.com 아님, platform.openai.com 키)
+cp .env.example .env   # GEMINI_API_KEY에 실제 키 입력 (aistudio.google.com/apikey 에서 무료 발급)
 npm start
 ```
 
@@ -16,18 +16,18 @@ npm start
 
 - `server.js` — 로컬 개발용. 정적 파일 서빙 + `/api/chat` 프록시.
 - `api/chat.js` — Vercel 배포용 서버리스 함수. 실제 배포는 이 파일이 처리함 (`server.js`는 Vercel에서 안 씀).
-- `lib/chat.js` — OpenAI Chat Completions API 호출 로직 + 캐릭터 페르소나(`SYSTEM_PROMPT`) 공통 모듈. `server.js`와 `api/chat.js`가 같이 사용.
+- `lib/chat.js` — Google Gemini API 호출 로직 + 캐릭터 페르소나(`SYSTEM_PROMPT`) 공통 모듈. `server.js`와 `api/chat.js`가 같이 사용.
 - `public/index.html`, `style.css`, `app.js` — FAB(글리치/롤링 툴팁) → CRT 전환 → 시스템 메시지 → 고정 대사 시퀀스 → 채팅 화면.
 - API 키는 서버(로컬 `.env` / Vercel 환경변수)에서만 보관하고 클라이언트로 절대 내려주지 않음.
 
 ## Vercel 배포 시 유의사항
 
-- Environment Variables에 `OPENAI_API_KEY` 등록 필수 (등록 후 재배포해야 반영됨)
+- Environment Variables에 `GEMINI_API_KEY` 등록 필수 (등록 후 재배포해야 반영됨)
 - 프로젝트 Framework Preset은 반드시 **Other**여야 함 — Express.js로 잡히면 `api/chat.js`가 아니라 `server.js`를 잘못된 방식으로 빌드하려다 실패함
 
 ## 커스터마이징 포인트
 
-- 캐릭터 이름/페르소나/모델: `lib/chat.js`의 `SYSTEM_PROMPT`, `OPENAI_MODEL`, `public/app.js`의 `CHARACTER_NAME`
+- 캐릭터 이름/페르소나/모델: `lib/chat.js`의 `SYSTEM_PROMPT`, `GEMINI_MODEL`, `public/app.js`의 `CHARACTER_NAME`
 - 캐릭터 이미지: `public/assets/rian.png` 교체
 - 롤링 툴팁 문구: `public/app.js`의 `TOOLTIP_LINES`
 - 고정 대사 시퀀스: `public/app.js`의 `STORY_LINES`
