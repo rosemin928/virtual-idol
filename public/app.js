@@ -97,8 +97,29 @@
     appendBubble('idol', FIRST_CHAT_LINE);
     chatHistory.push({ role: 'assistant', content: FIRST_CHAT_LINE });
     chatScene.classList.add('is-visible');
+    syncChatViewport();
     chatInput.focus();
   }
+
+  // ---- 모바일 키보드 대응 ----
+  // position:fixed 레이아웃은 키보드가 떠도 크기가 그대로라 입력창이 키보드 밑에 가려짐.
+  // visualViewport로 실제 보이는 영역에 맞춰 채팅 화면 높이/위치를 맞춰준다.
+  function syncChatViewport() {
+    const vv = window.visualViewport;
+    if (!vv) return;
+    chatScene.style.height = `${vv.height}px`;
+    chatScene.style.top = `${vv.offsetTop}px`;
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', syncChatViewport);
+    window.visualViewport.addEventListener('scroll', syncChatViewport);
+  }
+
+  chatInput.addEventListener('focus', () => {
+    setTimeout(syncChatViewport, 50);
+  });
 
   chatClose.addEventListener('click', () => {
     chatScene.classList.remove('is-visible');
