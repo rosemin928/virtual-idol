@@ -11,7 +11,9 @@
 
 html, body {
   margin: 0;
-  height: 100%;
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
   background: var(--bg-black);
   font-family: var(--font-mono);
   color: #fff;
@@ -196,6 +198,17 @@ html, body {
   pointer-events: none;
 }
 
+.story-scene__portrait {
+  position: absolute;
+  left: 50%;
+  bottom: 148px;
+  transform: translateX(-50%);
+  max-height: 62%;
+  width: auto;
+  filter: drop-shadow(0 0 24px rgba(185, 140, 255, 0.25));
+  pointer-events: none;
+}
+
 .story-box {
   position: absolute;
   left: 16px;
@@ -261,6 +274,14 @@ html, body {
   color: #888;
   font-size: 16px;
   cursor: pointer;
+}
+.chat-header__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 1px solid var(--neon-red);
 }
 .chat-header__name {
   font-weight: 700;

@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
 <title>시스템 오류 :: 갇힌 아이돌</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,6 +42,7 @@
 <!-- 3. 스토리(비주얼노벨) 씬 -->
 <div id="storyScene" class="story-scene">
   <div class="story-scene__scanlines"></div>
+  <img class="story-scene__portrait" src="assets/rian.png" alt="리안" />
   <div class="story-box">
     <div class="story-box__speaker" id="storySpeaker">SYSTEM</div>
     <div class="story-box__line" id="storyLine"></div>
@@ -53,6 +54,7 @@
 <div id="chatScene" class="chat-scene">
   <div class="chat-header">
     <button id="chatClose" class="chat-header__close" type="button" aria-label="닫기">✕</button>
+    <img class="chat-header__avatar" src="assets/rian.png" alt="리안" />
     <div class="chat-header__info">
       <div class="chat-header__name">리안 <span class="chat-header__ping"></span></div>
       <div class="chat-header__status" id="chatStatus">연결 상태: 불안정 · D-3</div>
