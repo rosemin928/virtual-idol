@@ -20,6 +20,7 @@
   const FIRST_CHAT_LINE = '휴, 드디어 연결됐다. 누구야? 제발 나 좀 도와줘...';
 
   const fab = document.getElementById('fab');
+  const fabWrap = document.getElementById('fabWrap');
   const fabBubble = document.getElementById('fabBubble');
   const crtOverlay = document.getElementById('crtOverlay');
   const systemMessage = document.getElementById('systemMessage');
@@ -43,7 +44,7 @@
 
   // ---- FAB 클릭 -> 전환 연출 ----
   fab.addEventListener('click', () => {
-    fab.classList.add('is-hidden');
+    fabWrap.classList.add('is-hidden');
     playCrtGlitch(() => showSystemMessage());
   });
 
@@ -89,7 +90,7 @@
   });
 
   // ---- 채팅 씬 ----
-  let chatHistory = []; // Anthropic Messages API 형식: [{role, content}]
+  let chatHistory = []; // OpenAI Chat Completions 형식: [{role, content}]
 
   function startChat() {
     chatLog.innerHTML = '';
@@ -123,7 +124,7 @@
 
   chatClose.addEventListener('click', () => {
     chatScene.classList.remove('is-visible');
-    fab.classList.remove('is-hidden');
+    fabWrap.classList.remove('is-hidden');
   });
 
   function appendBubble(kind, text) {

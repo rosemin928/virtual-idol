@@ -9,6 +9,14 @@
 
 * { box-sizing: border-box; }
 
+button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 html, body {
   margin: 0;
   position: fixed;
@@ -50,11 +58,14 @@ html, body {
 }
 
 /* ---------- FAB ---------- */
-.fab {
+.fab-wrap {
   position: fixed;
   right: 20px;
   bottom: 28px;
   z-index: 20;
+}
+
+.fab {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -65,6 +76,9 @@ html, body {
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   color: #fff;
+  font: inherit;
+  -webkit-appearance: none;
+  appearance: none;
   cursor: pointer;
   box-shadow: 0 0 6px rgba(255, 107, 129, 0.35), 0 0 16px rgba(185, 140, 255, 0.15);
   animation: fabGlitch 4s infinite;
@@ -127,7 +141,7 @@ html, body {
   99% { clip-path: inset(0 0 0 0); transform: translate(0, 0); }
 }
 
-.fab.is-hidden { display: none; }
+.fab-wrap.is-hidden { display: none; }
 
 /* ---------- CRT 전환 오버레이 ---------- */
 .crt-overlay {

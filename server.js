@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { callClaude } from './lib/claude.js';
+import { callChatModel } from './lib/chat.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -16,13 +16,13 @@ app.post('/api/chat', async (req, res) => {
     return res.status(400).json({ error: 'messages must be a non-empty array' });
   }
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
-    return res.status(500).json({ error: 'ANTHROPIC_API_KEY is not configured on the server (.env)' });
+    return res.status(500).json({ error: 'OPENAI_API_KEY is not configured on the server (.env)' });
   }
 
   try {
-    const reply = await callClaude(messages, apiKey);
+    const reply = await callChatModel(messages, apiKey);
     res.json({ reply });
   } catch (err) {
     res.status(err.status ?? 500).json({ error: err.message });
